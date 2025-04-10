@@ -8,6 +8,14 @@ from interactions import (
     slash_option,
 )
 from interactions.api.events import VoiceUserJoin, VoiceUserLeave
+import os
+from dotenv import load_dotenv
+
+# Lade die Umgebungsvariablen aus der .env-Datei
+load_dotenv()
+
+# Hole den Token aus der Umgebungsvariablen
+TOKEN = str(os.getenv("DISCORD_BOT_TOKEN"))
 
 bot = Client(intents=Intents.DEFAULT | Intents.GUILD_VOICE_STATES)
 
@@ -82,4 +90,4 @@ async def voice_leave(event: VoiceUserLeave):
             break
 
 
-bot.start("MTM1OTU3ODYyNDA4NDE0ODM0Ng.GA__jH.aKwkw517rkrehtCHtguMycvFdDgleiLVxjkbyw")   # noqa
+bot.start(TOKEN)
