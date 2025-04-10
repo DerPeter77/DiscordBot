@@ -6,6 +6,8 @@ from interactions import (
     SlashContext,
     OptionType,
     slash_option,
+    Status,
+    Activity
 )
 from interactions.api.events import VoiceUserJoin, VoiceUserLeave
 import os
@@ -27,6 +29,13 @@ voice_channels = []
 async def on_ready():
     print("Ready")
     print(f"This bot is owned by {bot.owner}")
+    await bot.change_presence(
+        status=Status.ONLINE,
+        activity=Activity(
+            name="🔊 Voice Channels",
+            type=2,
+        )
+    )
 
 
 @slash_command(
